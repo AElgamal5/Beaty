@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('password');
             $table->string('address');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

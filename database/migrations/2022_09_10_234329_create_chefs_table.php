@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('password');
             $table->string('address');
-            $table->decimal('rating');
-            $table->string('photo');
+            $table->tinyInteger('rating', false, true)->default(0);
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

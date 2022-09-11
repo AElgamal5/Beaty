@@ -41,4 +41,9 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'user_id', 'id');
+    }
 }
