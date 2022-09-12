@@ -28,6 +28,7 @@ Route::post('/register', [UserAuthController::class, 'registerPost'])->name('reg
 //-------------------private--------------------
 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout');
+Route::post('/addOrder', [UserController::class, 'addOrder'])->name('addOrder');
 
 
 //---------------------------------CHEF-----------------------------------//

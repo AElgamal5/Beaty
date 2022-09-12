@@ -21,10 +21,10 @@ return new class extends Migration
                 ->onDelete('cascade')
                 ->nullable();
             $table->foreignId('chef_id')
+                ->nullable()
                 ->constrained()
                 ->onUpdate('cascade')
-                ->onDelete('cascade')
-                ->nullable();
+                ->onDelete('cascade');
             $table->string('description');
             $table->string('title');
             $table->double('price', null, 2, true);
