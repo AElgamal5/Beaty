@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('title');
             $table->double('price', null, 2, true);
+            $table->tinyInteger('status')->default('0'); ## default 0 = not ready , 1 = ready, 2 = terminated
             $table->timestamps();
         });
     }
