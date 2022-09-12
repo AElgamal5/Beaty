@@ -25,17 +25,34 @@ class ChefController extends Controller
         return view('chef/dashboard');
     }
 
-    public function display_orders(Request $request){
+    public function display_accepted_orders(Request $request){
         $chef_id = session()->get('chef_id');
         $orders = Order::query()->where('chef_id', '=', $chef_id)->get();
-        return view('chef/orders', compact('orders'));
+        return view('chef/display_accepted_orders', compact('orders'));
     }
 
     public function accept_order(Request $request){
         $order_id = $request->order_id;
-        $order = Order::query()->where('id', '=', $order_id)->first();
-        $order->chef_id = session()->get('chef_id');
-        $order->save();
+        $chef_id = session()->get('chef_id');
+        $check = Order::query()->where('chef_id', '=', $chef_id)->count();
+        if(! ($check > 3)){
+            $order = Order::query()->where('id', '=', $order_id)->first();
+            $order->chef_id = session()->get('chef_id');
+            $order->save();
+        }
     }
 
+    public function display_not_accepted_orders(Request $request){
+        $chef_id = session()->get('chef_id');
+        $orders = Order::query()->whereNot('chef_id', '=', $chef_id)->get();
+        return view('chef/display_not_accepted_orders', compact('orders'));
+    }
+
+    public function mark_order_done(Request $request){
+        $order_id = $request->order_id;
+        $order = Order::query()->where('order_id', '=', $order_id)->get();
+        $order->status = 1;
+        $order->save();
+        return back()->withSuccess('You have Successfully loggedin');
+    }
 }
