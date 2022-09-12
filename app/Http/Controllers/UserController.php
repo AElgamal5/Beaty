@@ -37,4 +37,34 @@ class UserController extends Controller
         ]);
         return redirect()->back();
     }
+
+    public function editOrderShow($id)
+    {
+        $order = Order::where('id', '=', $id)->get();
+        //dd($order);
+        return view('editOrder', ['order' => $order[0]]);
+    }
+
+    public function editOrder(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric|min:1'
+        ]);
+        // dd($id);
+        Order::where('id', '=', $id)->update([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price')
+        ]);
+        return redirect()->route('dashboard');
+    }
+
+    public function deleteOrder($id)
+    {
+        // dd($id);
+        Order::where([['id', '=', $id], ['chef_id', '=', NULL]])->delete();
+        return redirect()->back();
+    }
 }

@@ -46,6 +46,7 @@
                         <th>title</th>
                         <th>Description</th>
                         <th>Price</th>
+                        <th>Edit/Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,6 +59,8 @@
                             <td>{{ $order->title }}</td>
                             <td>{{ $order->description }}</td>
                             <td>{{ $order->price }}</td>
+                            <td><a href="{{ Route('editOrderShow', $order->id) }}" class="btn btn-primary">Edit</a> | <a
+                                    href="{{ Route('deleteOrder', $order->id) }}" class="btn btn-danger">Delete</a></td>
                         </tr>
                     @endforeach
                 </tbody>

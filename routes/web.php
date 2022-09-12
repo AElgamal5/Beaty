@@ -29,6 +29,9 @@ Route::post('/register', [UserAuthController::class, 'registerPost'])->name('reg
 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout');
 Route::post('/addOrder', [UserController::class, 'addOrder'])->name('addOrder');
+Route::get('/editOrder/{id}', [UserController::class, 'editOrderShow'])->name('editOrderShow');
+Route::post('/editOrder/{id}', [UserController::class, 'editOrder'])->name('editOrder');
+Route::get('/deleteOrder/{id}', [UserController::class, 'deleteOrder'])->name('deleteOrder');
 
 
 //---------------------------------CHEF-----------------------------------//
