@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
-use App\Models\User;
 
 class UserController extends Controller
 {
@@ -17,7 +16,7 @@ class UserController extends Controller
     public function dashboard()
     {
         $orders = Auth::user()->orders;
-        return view('dashboard', ['orders' => $orders]);
+        return view('user.dashboard', ['orders' => $orders]);
     }
 
     public function addOrder(Request $request)
@@ -42,7 +41,7 @@ class UserController extends Controller
     {
         $order = Order::where('id', '=', $id)->get();
         //dd($order);
-        return view('editOrder', ['order' => $order[0]]);
+        return view('user.editOrder', ['order' => $order[0]]);
     }
 
     public function editOrder(Request $request, $id)

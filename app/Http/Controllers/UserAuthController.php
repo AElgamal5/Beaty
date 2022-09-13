@@ -15,7 +15,7 @@ class UserAuthController extends Controller
 
     public function login()
     {
-        return view('login');
+        return view('user.login');
     }
 
     public function loginPost(Request $request)
@@ -43,7 +43,7 @@ class UserAuthController extends Controller
 
     public function register()
     {
-        return view('register');
+        return view('user.register');
     }
 
     public function registerPost(Request $request)
