@@ -5,16 +5,28 @@
         </a>
         <div class="d-flex">
             <a href="{{ Route('index') }}" class="btn btn-light mr-2">Home</a>
-            <a href="#" class="btn btn-light mr-2">about us</a>
-            <a href="#" class="btn btn-light mr-2">Chefs</a>
-            @auth
+            <a href="/#aboutUS" class="btn btn-light mr-2">about us</a>
+            @auth('web')
+                <a href="{{ Route('dashboard') }}" class="btn btn-light mr-2">{{ Auth::user()->name }}</a>
                 <a href="{{ Route('logout') }}" class="btn btn-dark">Logout</a>
             @endauth
+            @auth('chef')
+                <a href="#" class="btn btn-light mr-2">{{ Auth::guard('chef')->user()->name }}</a>
+                <a href="#" class="btn btn-dark">Logout</a>
+            @endauth
+            @auth('admin')
+                <a href="{{ Route('admin.dashboard') }}"
+                    class="btn btn-light mr-2">{{ Auth::guard('admin')->user()->name }}</a>
+                <a href="{{ Route('admin.logout') }}" class="btn btn-dark">Logout</a>
+            @endauth
             @guest
-                <a href="{{ Route('login') }}" class="btn btn-success mr-2">User</a>
-                <a href="" class="btn btn-warning mr-2">Chef</a>
+                @guest('chef')
+                    @guest('admin')
+                        <a href="{{ Route('login') }}" class="btn btn-success mr-2">User</a>
+                        <a href="" class="btn btn-warning mr-2">Chef</a>
+                    @endguest
+                @endguest
             @endguest
         </div>
     </div>
 </nav>
-<br>

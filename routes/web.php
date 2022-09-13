@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChefController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,19 +23,38 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-//-------------------public--------------------
-Route::get('/', [UserAuthController::class, 'index'])->name('index');
+Route::get('/', [HomeController::class, 'index'])->name('index');
+
+//---------------------------------User-----------------------------------//
+//--public
 Route::get('/login', [UserAuthController::class, 'login'])->name('login');
 Route::post('/login', [UserAuthController::class, 'loginPost'])->name('login.post');
 Route::get('/register', [UserAuthController::class, 'register'])->name('register');
 Route::post('/register', [UserAuthController::class, 'registerPost'])->name('register.post');
-//-------------------private--------------------
+//--private
 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 Route::get('/logout', [UserAuthController::class, 'logout'])->name('logout');
 Route::post('/addOrder', [UserController::class, 'addOrder'])->name('addOrder');
 Route::get('/editOrder/{id}', [UserController::class, 'editOrderShow'])->name('editOrderShow');
 Route::post('/editOrder/{id}', [UserController::class, 'editOrder'])->name('editOrder');
 Route::get('/deleteOrder/{id}', [UserController::class, 'deleteOrder'])->name('deleteOrder');
+//---------------------------------Admin-----------------------------------//
+//--public
+Route::get('admin/login', [AdminAuthController::class, 'login'])->name('admin.login');
+Route::post('admin/login', [AdminAuthController::class, 'loginPost'])->name('admin.login.post');
+//--private
+Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+
+Route::get('admin/users', [AdminController::class, 'users'])->name('admin.users');
+Route::get('admin/users/edit{id}', [AdminController::class, 'usersEdit'])->name('admin.users.edit');
+Route::post('admin/users/edit{id}', [AdminController::class, 'usersEditPost'])->name('admin.users.edit.post');
+Route::get('admin/users/delete{id}', [AdminController::class, 'userDelete'])->name('admin.users.delete');
+Route::get('admin/users/add', [AdminController::class, 'userAdd'])->name('admin.users.add');
+Route::post('admin/users/add', [AdminController::class, 'userAddPost'])->name('admin.users.add.post');
+
+Route::get('admin/chefs', [AdminController::class, 'chefs'])->name('admin.chefs');
+Route::get('admin/orders', [AdminController::class, 'orders'])->name('admin.orders');
 
 
 //---------------------------------CHEF-----------------------------------//

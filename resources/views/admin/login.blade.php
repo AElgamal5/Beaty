@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'User Login')
+@section('title', 'Admin login')
 
 @section('content')
     <br>
     <div class="container">
-        <h3>User Login:</h3>
-        <form method="POST" action="{{ route('login.post') }}">
+        <h3>Admin Login:</h3>
+        <form method="POST" action="{{ route('admin.login.post') }}">
             @csrf
             <div class="form-group">
                 <label for="inputEmail">Email</label>
@@ -19,8 +19,5 @@
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
         <br>
-        <div>
-            <a href="{{ Route('register') }}">I don't have an account</a>
-        </div>
     </div>
 @endsection

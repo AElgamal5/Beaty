@@ -3,6 +3,7 @@
 @section('title', 'Edit order')
 
 @section('content')
+    <br>
     <div class="container">
         <a href="{{ Route('dashboard') }}" class="btn btn-primary">Back</a>
         <br><br>

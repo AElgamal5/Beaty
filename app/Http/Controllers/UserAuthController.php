@@ -13,11 +13,6 @@ class UserAuthController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function index()
-    {
-        return view('index');
-    }
-
     public function login()
     {
         return view('user.login');
@@ -33,7 +28,6 @@ class UserAuthController extends Controller
             return redirect()->route('dashboard')
                 ->withSuccess('You have Successfully loggedin');
         }
-
         return redirect("login")->withErrors('Oppes! You have entered invalid credentials');
     }
 

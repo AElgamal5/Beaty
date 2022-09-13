@@ -3,6 +3,7 @@
 @section('title', 'User Register')
 
 @section('content')
+    <br>
     <div class="container">
         <h3>User Register :</h3>
         <br>

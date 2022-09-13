@@ -3,6 +3,7 @@
 @section('title', 'User dashboard')
 
 @section('content')
+    <br>
     <div class="container">
         <h1>{{ Auth::user()->name }} is logged in !</h1>
         <hr>
