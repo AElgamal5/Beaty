@@ -9,20 +9,50 @@ use Illuminate\Support\Facades\Hash;
 
 class ChefController extends Controller
 {
-    public function login_index(Request $request){
-        return view('chef/login_index');
+    public function login_index(){
+        return view('chef.login_index');
     }
 
     public function login(Request $request){
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
         $user = Chef::query()->where('email', '=', $request->email)->first();
         if ($user && Hash::check($request->password, $user->password)) {
-            $request->session()->put('adminID', $user->id);
+            $request->session()->put('chef_id', $user->id);
+            return redirect('chef/dashboard');
+        }
+    }
+
+    public function register_index(Request $request){
+        return view('chef/login_index');
+    }
+
+    public function register(Request $request){
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        $user = Chef::query()->where('email', '=', $request->email)->first();
+        if (! $user) {
+            $user = new Chef();
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->phone = $request->phone;
+            $user->address = $request->address;
+            $user->save();
+            $request->session()->put('chef_id', $user->id);
             return redirect('chef/dashboard');
         }
     }
 
     public function index(Request $request){
-        return view('chef/dashboard');
+        $data = Chef::query()->where('email', '=', session()->get('chef_id'))->first();
+        $chef_id = session()->get('chef_id');
+        $accepted_orders = Order::query()->where('chef_id', '=', $chef_id)->get();
+        $orders = Order::query()->whereNot('chef_id', '=', $chef_id)->get();
+        return view('chef/dashboard', compact('data', 'accepted_orders', 'orders'));
     }
 
     public function display_accepted_orders(Request $request){

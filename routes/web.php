@@ -37,8 +37,10 @@ Route::get('/deleteOrder/{id}', [UserController::class, 'deleteOrder'])->name('d
 
 //---------------------------------CHEF-----------------------------------//
 
-Route::get("chef/", [ChefController::class, 'login_index'])->name('chef.login_index');
+Route::get("/chef", [ChefController::class, 'login_index'])->name('chef.login_index');
 Route::post("chef/login", [ChefController::class, 'login'])->name('chef.login');
+Route::post("chef/register", [ChefController::class, 'register'])->name('chef.register');
+Route::get("chef/register_index", [ChefController::class, 'register_index'])->name('chef.register_index');
 Route::get("chef/dashboard", [ChefController::class, 'index'])->name('chef.index');
 Route::get("chef/display_accepted_orders", [ChefController::class, 'display_accepted_orders'])->name('chef.display_accepted_orders');
 Route::post("chef/accept_order/{order_id}", [ChefController::class, 'accept_order'])->name('chef.accept_order');
