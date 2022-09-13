@@ -43,6 +43,6 @@ Route::post("chef/register", [ChefController::class, 'register'])->name('chef.re
 Route::get("chef/register_index", [ChefController::class, 'register_index'])->name('chef.register_index');
 Route::get("chef/dashboard", [ChefController::class, 'index'])->name('chef.index');
 Route::get("chef/display_accepted_orders", [ChefController::class, 'display_accepted_orders'])->name('chef.display_accepted_orders');
-Route::post("chef/accept_order/{order_id}", [ChefController::class, 'accept_order'])->name('chef.accept_order');
+Route::get("chef/accept_order/{order_id}", [ChefController::class, 'accept_order'])->name('chef.accept_order');
 Route::get("chef/display_not_accepted_orders", [ChefController::class, 'display_not_accepted_orders'])->name('chef.display_not_accepted_orders');
 Route::post("chef/mark_order_done/{order_id}", [ChefController::class, 'mark_order_done'])->name('chef.mark_order_done');

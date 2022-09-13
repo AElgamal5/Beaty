@@ -10,22 +10,22 @@
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
                 <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>title</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                </tr>
+                    <tr>
+                        <th>No.</th>
+                        <th>title</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
                 </thead>
                 <tbody>
-                @foreach ($accepted_orders as $order)
-                    <tr>
-                        <td>{{ $order->id }}</td>
-                        <td>{{ $order->title }}</td>
-                        <td>{{ $order->description }}</td>
-                        <td>{{ $order->price }}</td>
-                    </tr>
-                @endforeach
+                    @foreach ($accepted_orders as $order)
+                        <tr>
+                            <td>{{ $order->id }}</td>
+                            <td>{{ $order->title }}</td>
+                            <td>{{ $order->description }}</td>
+                            <td>{{ $order->price }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -35,25 +35,25 @@
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
                 <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>title</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Accepted</th>
-                </tr>
+                    <tr>
+                        <th>No.</th>
+                        <th>title</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Accepted</th>
+                    </tr>
                 </thead>
                 <tbody>
-                @foreach ($orders as $order)
-                    <tr>
-                        <td>{{ $order->id }}</td>
-                        <td>{{ $order->title }}</td>
-                        <td>{{ $order->description }}</td>
-                        <td>{{ $order->price }}</td>
-                        <td><a href="{{ Route('chef.accept_order', $order->id) }}" class="btn btn-primary">Accept</a>
-                        </td>
-                    </tr>
-                @endforeach
+                    @foreach ($orders as $order)
+                        <tr>
+                            <td>{{ $order->id }}</td>
+                            <td>{{ $order->title }}</td>
+                            <td>{{ $order->description }}</td>
+                            <td>{{ $order->price }}</td>
+                            <td><a href="{{ Route('chef.accept_order', $order->id) }}" class="btn btn-primary">Accept</a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
