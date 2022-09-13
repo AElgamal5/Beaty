@@ -10,7 +10,7 @@
     <title>@yield('title')</title>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     @include('includes.header')
     @include('includes.flashMessage')
     @yield('content')

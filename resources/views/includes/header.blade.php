@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-secondary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">
+        <a class="navbar-brand" href="{{ Route('index') }}">
             <h2 class="text-light">B<span class="text-warning">eat</span>y</h2>
         </a>
         <div class="d-flex">
