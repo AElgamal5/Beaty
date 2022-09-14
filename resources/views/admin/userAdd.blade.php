@@ -9,7 +9,7 @@
         <a class="btn btn-primary" href="{{ Route('admin.users') }}"><i class="fas fa-chevron-left"></i> Back </a>
         <br>
         <br>
-        <h1>Edit User</h1>
+        <h1>Add User</h1>
         <br>
         <form method="POST" action="{{ Route('admin.users.add.post') }}">
             @csrf

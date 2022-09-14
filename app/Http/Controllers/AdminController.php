@@ -150,4 +150,65 @@ class AdminController extends Controller
         $orders = Order::all();
         return view('admin.orders', ['orders' => $orders]);
     }
+
+    public function ordersEdit($id)
+    {
+        $order = Order::where('id', '=', $id)->get();
+        return view('admin.ordersEdit', ['order' => $order[0]]);
+    }
+
+    public function ordersEditPost(Request $request, $id)
+    {
+        $request->validate([
+            'user_id' => 'required|numeric|min:1',
+            'chef_id' => 'nullable|numeric|min:1',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|numeric|min:0',
+            'status' => 'required|numeric|min:0|max:2'
+        ]);
+
+        $order = Order::find($id);
+        $order->user_id = $request->input('user_id');
+        $order->chef_id = $request->input('chef_id');
+        $order->title = $request->input('title');
+        $order->description = $request->input('description');
+        $order->price = $request->input('price');
+        $order->status = $request->input('status');
+        $order->save();
+
+        return redirect()->route('admin.orders');
+    }
+
+    public function ordersDelete($id)
+    {
+        Order::find($id)->delete();
+        return redirect()->back();
+    }
+
+    public function ordersAdd()
+    {
+        return view('admin.ordersAdd');
+    }
+
+    public function ordersAddPost(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required|numeric|min:1',
+            'chef_id' => 'nullable|numeric|min:1',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|numeric|min:0',
+            'status' => 'required|numeric|min:0|max:2'
+        ]);
+        Order::create([
+            'user_id' => $request->input('user_id'),
+            'chef_id' => $request->input('chef_id'),
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'status' => $request->input('status'),
+        ]);
+        return redirect()->route('admin.orders');
+    }
 }

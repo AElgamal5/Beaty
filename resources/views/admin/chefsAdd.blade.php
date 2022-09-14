@@ -9,7 +9,7 @@
         <a class="btn btn-primary" href="{{ Route('admin.chefs') }}"><i class="fas fa-chevron-left"></i> Back </a>
         <br>
         <br>
-        <h1>Edit User</h1>
+        <h1>ADD Chef</h1>
         <br>
         <form method="POST" action="{{ Route('admin.chefs.add.post') }}">
             @csrf

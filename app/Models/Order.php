@@ -16,7 +16,8 @@ class Order extends Model
         'chef_id',
         'description',
         'title',
-        'price'
+        'price',
+        'status'
     ];
 
 
