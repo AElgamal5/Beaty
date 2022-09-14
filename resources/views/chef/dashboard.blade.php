@@ -25,8 +25,9 @@
                             <td>{{ $order->title }}</td>
                             <td>{{ $order->description }}</td>
                             <td>{{ $order->price }}</td>
-                            @if($order->status == 0)
-                                <td><a href="{{ Route('chef.mark_order_done', $order->id) }}" class="btn btn-success">Ready</a></td>
+                            @if ($order->status == 0)
+                                <td><a href="{{ Route('chef.mark_order_done', $order->id) }}" class="btn btn-success"><i
+                                            class="fa-solid fa-check"></i> Ready</a></td>
                             @else
                                 <td>Done</td>
                             @endif
@@ -56,7 +57,8 @@
                             <td>{{ $order->title }}</td>
                             <td>{{ $order->description }}</td>
                             <td>{{ $order->price }}</td>
-                            <td><a href="{{ Route('chef.accept_order', $order->id) }}" class="btn btn-primary">Accept</a>
+                            <td><a href="{{ Route('chef.accept_order', $order->id) }}" class="btn btn-primary"><i
+                                        class="fa-solid fa-thumbtack"></i> Accept</a>
                             </td>
                         </tr>
                     @endforeach

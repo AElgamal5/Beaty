@@ -60,7 +60,7 @@
                             <td class="text-center">{{ $order->price }}</td>
                             <td class="text-center">
                                 @if ($order->chef_id == null)
-                                    -
+                                    --
                                 @elseif ($order->status == 0)
                                     Working on
                                 @else

@@ -117,4 +117,30 @@ class ChefController extends Controller
         $order[0]->save();
         return back()->withSuccess('Makred as Done');
     }
+
+    public function profile()
+    {
+        return view('chef.profile');
+    }
+
+    public function profileEdit(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'nullable|min:6',
+            'phone' => 'required|string',
+            'address' => 'required|string'
+        ]);
+        $chef = Chef::find($id);
+        $chef->name = $request->input('name');
+        $chef->email = $request->input('email');
+        if ($request->input('password') != NULL) {
+            $chef->password = bcrypt($request->input('password'));
+        }
+        $chef->phone = $request->input('phone');
+        $chef->address = $request->input('address');
+        $chef->save();
+        return redirect()->back()->withSuccess('Data changed Successfully');
+    }
 }
