@@ -85,6 +85,8 @@
                     @endforeach
                 </tbody>
             </table>
+            {!! $orders->links() !!}
+            <br>
         </div>
     </div>
 @endsection

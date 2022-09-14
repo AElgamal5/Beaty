@@ -17,8 +17,7 @@
                 <a href="{{ Route('chef.logout') }}" class="btn btn-dark">Logout</a>
             @endauth
             @auth('admin')
-                <a href="{{ Route('admin.dashboard') }}"
-                    class="btn btn-light mr-2">{{ Auth::guard('admin')->user()->name }}</a>
+                <a href="{{ Route('admin.dashboard') }}" class="btn btn-light mr-2">Dashboard</a>
                 <a href="{{ Route('admin.logout') }}" class="btn btn-dark">Logout</a>
             @endauth
             @guest

@@ -3,13 +3,12 @@
 @section('title', 'Chef Add')
 
 @section('content')
-    <br>
     <div class="container">
         <br>
         <a class="btn btn-primary" href="{{ Route('admin.chefs') }}"><i class="fas fa-chevron-left"></i> Back </a>
         <br>
         <br>
-        <h1>ADD Chef</h1>
+        <h1>ADD Chef: </h1>
         <br>
         <form method="POST" action="{{ Route('admin.chefs.add.post') }}">
             @csrf
@@ -35,9 +34,10 @@
             </div>
             <div class="form-group">
                 <label>Rating</label>
-                <input type="number" class="form-control" name="rating" placeholder="Rating">
+                <input type="number" class="form-control" name="rating" placeholder="Rating" min="0"
+                    max="5">
             </div>
-            <button type="submit" class="btn btn-primary">ADD</button>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> ADD</button>
         </form>
     </div>
 @endsection

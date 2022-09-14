@@ -31,7 +31,7 @@ class ChefController extends Controller
             return redirect()->route('chef.index')
                 ->withSuccess('You have Successfully loggedin');
         }
-        return redirect("chef.login_index")->withErrors('Oppes! You have entered invalid credentials');
+        return redirect()->route('chef.login_index')->withErrors('Oppes! You have entered invalid credentials');
     }
 
     public function logout()
@@ -52,7 +52,7 @@ class ChefController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:chefs,email',
             'password' => 'required|min:6',
             'phone' => 'required|string',
             'address' => 'required|string'
@@ -76,8 +76,10 @@ class ChefController extends Controller
     {
         $data = Chef::query()->where('id', '=', session()->get('chef_id'))->first();
         $chef_id = session()->get('chef_id');
-        $accepted_orders = Order::query()->where('chef_id', '=', $chef_id)->get();
-        $orders = Order::where('chef_id', '=', NULL)->get();
+        // $accepted_orders = Order::query()->where('chef_id', '=', $chef_id)->get();
+        $accepted_orders = Order::query()->where('chef_id', '=', $chef_id)->simplePaginate(5, ['*'], 'acceptedOrders');
+        // $orders = Order::where('chef_id', '=', NULL)->get();
+        $orders = Order::where('chef_id', '=', NULL)->simplePaginate(5, ['*'], 'orders');
         //dd($orders);
         return view('chef/dashboard', compact('data', 'accepted_orders', 'orders'));
     }
@@ -93,13 +95,15 @@ class ChefController extends Controller
     {
         $order_id = $request->order_id;
         $chef_id = session()->get('chef_id');
-        $check = Order::query()->where('chef_id', '=', $chef_id)->count();
-        if (!($check > 3)) {
+        $check = Order::query()->where('chef_id', '=', $chef_id)->where('status', '=', 0)->count();
+        // dd($check);
+        if ($check < 3) {
             $order = Order::query()->where('id', '=', $order_id)->first();
             $order->chef_id = session()->get('chef_id');
             $order->save();
+            return redirect()->back()->withSuccess('Order Accepted');
         }
-        return redirect()->back()->withSuccess('Order Accepted');
+        return redirect()->back()->withErrors('Can\'t more than 3 orders!');
     }
 
     public function display_not_accepted_orders(Request $request)

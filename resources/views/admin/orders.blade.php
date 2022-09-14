@@ -8,9 +8,9 @@
         <a class="btn btn-primary" href="{{ Route('admin.dashboard') }}"><i class="fas fa-chevron-left"></i> Back </a>
         <br>
         <br>
-        <h1>Orders page</h1>
+        <h1>Orders page: </h1>
         <br>
-        <a href="{{ Route('admin.orders.add') }}" class="btn btn-success"><i class="fa-solid fa-plus"></i>Add New Order</a>
+        <a href="{{ Route('admin.orders.add') }}" class="btn btn-success"><i class="fa-solid fa-plus"></i> Add New Order</a>
         <br>
         <br>
         <div class="table-responsive">
@@ -37,13 +37,17 @@
                             <td>{{ $order->description }}</td>
                             <td>{{ $order->price }}</td>
                             <td>{{ $order->status }}</td>
-                            <td><a href="{{ Route('admin.orders.edit', $order->id) }}" class="btn btn-primary">Edit</a> | <a
-                                    href="{{ Route('admin.orders.delete', $order->id) }}" class="btn btn-danger">Delete</a>
+                            <td><a href="{{ Route('admin.orders.edit', $order->id) }}" class="btn btn-primary"><i
+                                        class="fa-solid fa-pen"></i> Edit</a> | <a
+                                    href="{{ Route('admin.orders.delete', $order->id) }}" class="btn btn-danger"> <i
+                                        class="fa-solid fa-trash-can"></i> Delete</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            {!! $orders->links() !!}
+            <br>
         </div>
     </div>
 @endsection

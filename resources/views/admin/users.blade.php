@@ -8,7 +8,7 @@
         <a class="btn btn-primary" href="{{ Route('admin.dashboard') }}"><i class="fas fa-chevron-left"></i> Back </a>
         <br>
         <br>
-        <h1>Users page</h1>
+        <h1>Users page: </h1>
         <a href="{{ Route('admin.users.add') }}" class="btn btn-success"><i class="fa-solid fa-plus"></i>Add New User</a>
         <br>
         <br>
@@ -32,13 +32,17 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->phone }}</td>
                             <td>{{ $user->address }}</td>
-                            <td><a href="{{ Route('admin.users.edit', $user->id) }}" class="btn btn-primary">Edit</a> | <a
-                                    href="{{ Route('admin.users.delete', $user->id) }}" class="btn btn-danger">Delete</a>
+                            <td><a href="{{ Route('admin.users.edit', $user->id) }}" class="btn btn-primary"><i
+                                        class="fa-solid fa-user-pen"></i> Edit</a> | <a
+                                    href="{{ Route('admin.users.delete', $user->id) }}" class="btn btn-danger"> <i
+                                        class="fa-solid fa-trash-can"></i> Delete</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            {!! $users->links() !!}
+            <br>
         </div>
     </div>
 @endsection

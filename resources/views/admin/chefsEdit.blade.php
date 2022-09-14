@@ -9,7 +9,7 @@
         <a class="btn btn-primary" href="{{ Route('admin.chefs') }}"><i class="fas fa-chevron-left"></i> Back </a>
         <br>
         <br>
-        <h1>Edit Chef</h1>
+        <h1>Edit Chef: </h1>
         <br>
         <form method="POST" action="{{ Route('admin.chefs.edit.post', $chef->id) }}">
             @csrf
@@ -35,7 +35,7 @@
                 <label>Rating</label>
                 <input type="text" class="form-control" name="rating" placeholder="address" value="{{ $chef->rating }}">
             </div>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save</button>
         </form>
     </div>
 @endsection

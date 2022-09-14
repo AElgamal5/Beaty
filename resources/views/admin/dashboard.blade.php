@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="col py-3">
-                <h1>{{ Auth::guard('admin')->user()->name }} is logged in !</h1>
+                <h1>Hello {{ Auth::guard('admin')->user()->name }} !</h1>
                 <br>
                 <ul>
                     <li>

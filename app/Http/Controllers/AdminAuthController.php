@@ -25,8 +25,7 @@ class AdminAuthController extends Controller
             'password' => 'required|string|min:8',
         ]);
         if (Auth::guard('admin')->attempt($request->only('email', 'password'))) {
-            return redirect()->route('admin.dashboard')
-                ->withSuccess('You have Successfully loggedin');
+            return redirect()->route('admin.dashboard');
         }
         return redirect()->route('admin.login')->withErrors('Oppes! You have entered invalid credentials');
     }

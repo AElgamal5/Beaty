@@ -9,7 +9,7 @@
         <a class="btn btn-primary" href="{{ Route('admin.orders') }}"><i class="fas fa-chevron-left"></i> Back </a>
         <br>
         <br>
-        <h1>ADD Order</h1>
+        <h1>ADD Order: </h1>
         <br>
         <form method="POST" action="{{ Route('admin.orders.add.post') }}">
             @csrf
@@ -37,7 +37,7 @@
                 <label>Status</label>
                 <input type="number" class="form-control" name="status" placeholder="address">
             </div>
-            <button type="submit" class="btn btn-primary">ADD</button>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> ADD</button>
             <br>
             <br>
         </form>

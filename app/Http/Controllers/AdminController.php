@@ -26,7 +26,7 @@ class AdminController extends Controller
 
     public function users()
     {
-        $users = User::all();
+        $users = User::simplePaginate(5, ['*'], 'users');
         return view('admin.users', ['users' => $users]);
     }
 
@@ -88,7 +88,7 @@ class AdminController extends Controller
 
     public function chefs()
     {
-        $chefs = Chef::all();
+        $chefs = Chef::simplePaginate(5, ['*'], 'chefs');
         return view('admin.chefs', ['chefs' => $chefs]);
     }
 
@@ -151,7 +151,7 @@ class AdminController extends Controller
 
     public function orders()
     {
-        $orders = Order::all();
+        $orders = Order::simplePaginate(5, ['*'], 'orders');
         return view('admin.orders', ['orders' => $orders]);
     }
 

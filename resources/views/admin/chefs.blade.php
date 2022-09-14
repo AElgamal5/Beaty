@@ -8,7 +8,7 @@
         <a class="btn btn-primary" href="{{ Route('admin.dashboard') }}"><i class="fas fa-chevron-left"></i> Back </a>
         <br>
         <br>
-        <h1>Chefs page</h1>
+        <h1>Chefs page: </h1>
         <br>
         <a href="{{ Route('admin.chefs.add') }}" class="btn btn-success"><i class="fa-solid fa-plus"></i>Add New Chef</a>
         <br>
@@ -35,13 +35,17 @@
                             <td>{{ $chef->phone }}</td>
                             <td>{{ $chef->address }}</td>
                             <td>{{ $chef->rating }}</td>
-                            <td><a href="{{ Route('admin.chefs.edit', $chef->id) }}" class="btn btn-primary">Edit</a> | <a
-                                    href="{{ Route('admin.chefs.delete', $chef->id) }}" class="btn btn-danger">Delete</a>
+                            <td><a href="{{ Route('admin.chefs.edit', $chef->id) }}" class="btn btn-primary"><i
+                                        class="fa-solid fa-pen"></i> Edit</a> | <a
+                                    href="{{ Route('admin.chefs.delete', $chef->id) }}" class="btn btn-danger"><i
+                                        class="fa-solid fa-trash-can"></i> Delete</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            {!! $chefs->links() !!}
+            <br>
         </div>
     </div>
 @endsection

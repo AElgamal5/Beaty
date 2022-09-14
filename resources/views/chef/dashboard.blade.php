@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h1>{{ $data->name }} is logged in !</h1>
+        <h1>Hello {{ $data->name }} !</h1>
         <hr>
         <h3>Accepted orders :</h3>
         <div class="table-responsive">
@@ -35,10 +35,12 @@
                     @endforeach
                 </tbody>
             </table>
+            {!! $accepted_orders->links() !!}
+            <br>
         </div>
         <br>
         <br><br>
-        <h3>Accepted orders :</h3>
+        <h3>Orders :</h3>
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
                 <thead>
@@ -64,6 +66,8 @@
                     @endforeach
                 </tbody>
             </table>
+            {!! $orders->links() !!}
+            <br>
         </div>
     </div>
 @endsection

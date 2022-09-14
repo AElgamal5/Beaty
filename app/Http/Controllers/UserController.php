@@ -17,7 +17,8 @@ class UserController extends Controller
 
     public function dashboard()
     {
-        $orders = Auth::user()->orders;
+        // $orders = Auth::user()->orders->paginate(5);
+        $orders = Order::where('user_id', '=', Auth::user()->id)->simplePaginate(5, ['*'], 'orders');
         return view('user.dashboard', ['orders' => $orders]);
     }
 

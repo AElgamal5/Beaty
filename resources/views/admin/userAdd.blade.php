@@ -5,11 +5,9 @@
 @section('content')
     <br>
     <div class="container">
-        <br>
         <a class="btn btn-primary" href="{{ Route('admin.users') }}"><i class="fas fa-chevron-left"></i> Back </a>
         <br>
-        <br>
-        <h1>Add User</h1>
+        <h1>Add User: </h1>
         <br>
         <form method="POST" action="{{ Route('admin.users.add.post') }}">
             @csrf
@@ -33,7 +31,8 @@
                 <label>Address</label>
                 <input type="text" class="form-control" name="address" placeholder="address">
             </div>
-            <button type="submit" class="btn btn-primary">ADD</button>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> ADD</button>
+            <br><br>
         </form>
     </div>
 @endsection
