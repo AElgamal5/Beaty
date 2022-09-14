@@ -1,18 +1,12 @@
-    <!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>register</title>
-</head>
+@section('title', 'User Register')
 
-<body>
+@section('content')
+    <br>
     <div class="container">
-        <br><br>
+        <h3>User Register :</h3>
+        <br>
         <form method="POST" action="{{ route('chef.register') }}">
             @csrf
             <div class="form-group">
@@ -37,9 +31,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Sign up</button>
         </form>
-        <br><br>
-        <a href="{{ Route('chef.login_index') }}">login</a>
+        <br>
+        <a href="{{ Route('chef.login_index') }}">Already have an account</a>
     </div>
-</body>
-
-</html>
+@endsection

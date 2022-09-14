@@ -15,6 +15,7 @@
                         <th>title</th>
                         <th>Description</th>
                         <th>Price</th>
+                        <th>state</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,6 +25,11 @@
                             <td>{{ $order->title }}</td>
                             <td>{{ $order->description }}</td>
                             <td>{{ $order->price }}</td>
+                            @if($order->status == 0)
+                                <td><a href="{{ Route('chef.mark_order_done', $order->id) }}" class="btn btn-success">Ready</a></td>
+                            @else
+                                <td>Done</td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>

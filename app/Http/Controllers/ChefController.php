@@ -5,10 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Chef;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ChefController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
+
     public function login_index()
     {
         return view('chef.login_index');
@@ -20,11 +27,20 @@ class ChefController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-        $user = Chef::query()->where('email', '=', $request->email)->first();
-        if ($user && Hash::check($request->password, $user->password)) {
-            $request->session()->put('chef_id', $user->id);
-            return redirect('chef/dashboard');
+        if (Auth::guard('chef')->attempt($request->only('email', 'password'))) {
+            return redirect()->route('chef.index')
+                ->withSuccess('You have Successfully loggedin');
         }
+        return redirect("chef.login_index")->withErrors('Oppes! You have entered invalid credentials');
+    }
+
+    public function logout()
+    {
+        if (!Auth::guard('chef')->check()) {
+            return redirect()->route('chef.login_index');
+        }
+        Auth::guard('chef')->logout();
+        return redirect()->route('chef.login_index');
     }
 
     public function register_index()
@@ -92,9 +108,9 @@ class ChefController extends Controller
     public function mark_order_done(Request $request)
     {
         $order_id = $request->order_id;
-        $order = Order::query()->where('order_id', '=', $order_id)->get();
-        $order->status = 1;
-        $order->save();
-        return back()->withSuccess('You have Successfully loggedin');
+        $order = Order::query()->where('id', '=', $order_id)->get();
+        $order[0]->status = 1;
+        $order[0]->save();
+        return back()->withSuccess('Makred as Done');
     }
 }

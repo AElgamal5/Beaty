@@ -27,12 +27,6 @@
                                     class="ms-1 d-none d-sm-inline text-white">Orders</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link align-middle px-0">
-                                <i class="fas fa-user-cog"></i> <span
-                                    class="ms-1 d-none d-sm-inline text-white">Admins</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>

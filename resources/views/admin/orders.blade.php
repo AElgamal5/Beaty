@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <br>
-        <a class="btn btn-primary" href="{{ Route('admin.orders') }}"><i class="fas fa-chevron-left"></i> Back </a>
+        <a class="btn btn-primary" href="{{ Route('admin.dashboard') }}"><i class="fas fa-chevron-left"></i> Back </a>
         <br>
         <br>
         <h1>Orders page</h1>

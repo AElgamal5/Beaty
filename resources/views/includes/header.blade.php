@@ -11,8 +11,8 @@
                 <a href="{{ Route('logout') }}" class="btn btn-dark">Logout</a>
             @endauth
             @auth('chef')
-                <a href="#" class="btn btn-light mr-2">{{ Auth::guard('chef')->user()->name }}</a>
-                <a href="#" class="btn btn-dark">Logout</a>
+                <a href="{{ Route('chef.index') }}" class="btn btn-light mr-2">{{ Auth::guard('chef')->user()->name }}</a>
+                <a href="{{ Route('chef.logout') }}" class="btn btn-dark">Logout</a>
             @endauth
             @auth('admin')
                 <a href="{{ Route('admin.dashboard') }}"
@@ -23,7 +23,7 @@
                 @guest('chef')
                     @guest('admin')
                         <a href="{{ Route('login') }}" class="btn btn-success mr-2">User</a>
-                        <a href="" class="btn btn-warning mr-2">Chef</a>
+                        <a href="{{ Route('chef.login_index') }}" class="btn btn-warning mr-2">Chef</a>
                     @endguest
                 @endguest
             @endguest
