@@ -5,7 +5,7 @@
 @section('content')
     <br>
     <div class="container">
-        <h3>User Register :</h3>
+        <h3>Chef Register :</h3>
         <br>
         <form method="POST" action="{{ route('chef.register') }}">
             @csrf

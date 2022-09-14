@@ -14,6 +14,11 @@
     <script src="https://kit.fontawesome.com/53258a334a.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png"
         href="{{ asset('images/sandwich-icon-design-vector-removebg-preview.png') }}" />
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
     <title>@yield('title')</title>
 </head>
 

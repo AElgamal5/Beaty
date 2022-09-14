@@ -5,7 +5,7 @@
 @section('content')
     <br>
     <div class="container">
-        <a href="{{ Route('dashboard') }}" class="btn btn-primary">Back</a>
+        <a href="{{ Route('dashboard') }}" class="btn btn-primary"><i class="fas fa-chevron-left"></i> Back</a>
         <br><br>
         <h4>Edit the order no.{{ $order->id }}</h4>
         <form method="POST" action="{{ Route('editOrder', $order->id) }}">

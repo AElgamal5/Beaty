@@ -21,12 +21,12 @@ class UserAuthController extends Controller
     public function loginPost(Request $request)
     {
         $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
         ]);
         if (Auth::attempt($request->only('email', 'password'))) {
             return redirect()->route('dashboard')
-                ->withSuccess('You have Successfully loggedin');
+                ->withSuccess('You have Successfully logged in');
         }
         return redirect("login")->withErrors('Oppes! You have entered invalid credentials');
     }
@@ -48,11 +48,11 @@ class UserAuthController extends Controller
     public function registerPost(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'phone' => 'required',
-            'address' => 'required'
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+            'phone' => 'required|string',
+            'address' => 'required|string'
         ]);
         User::create([
             'name' => $request->input('name'),
@@ -61,6 +61,6 @@ class UserAuthController extends Controller
             'phone' => $request->input('phone'),
             'address' => $request->input('address'),
         ]);
-        return redirect()->route('login');
+        return redirect()->route('login')->withSuccess('You have Successfully registerd');
     }
 }

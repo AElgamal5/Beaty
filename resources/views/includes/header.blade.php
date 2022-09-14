@@ -7,7 +7,8 @@
             <a href="{{ Route('index') }}" class="btn btn-light mr-2">Home</a>
             <a href="/#aboutUS" class="btn btn-light mr-2">about us</a>
             @auth('web')
-                <a href="{{ Route('dashboard') }}" class="btn btn-light mr-2">{{ Auth::user()->name }}</a>
+                <a href="{{ Route('dashboard') }}" class="btn btn-light mr-2">Dashboard</a>
+                <a href="{{ Route('profile', Auth::user()->id) }}" class="btn btn-light mr-2">{{ Auth::user()->name }}</a>
                 <a href="{{ Route('logout') }}" class="btn btn-dark">Logout</a>
             @endauth
             @auth('chef')

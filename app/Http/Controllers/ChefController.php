@@ -24,8 +24,8 @@ class ChefController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
         ]);
         if (Auth::guard('chef')->attempt($request->only('email', 'password'))) {
             return redirect()->route('chef.index')
@@ -51,9 +51,13 @@ class ChefController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+            'phone' => 'required|string',
+            'address' => 'required|string'
         ]);
+
         $user = Chef::query()->where('email', '=', $request->email)->first();
         if (!$user) {
             $user = new Chef();

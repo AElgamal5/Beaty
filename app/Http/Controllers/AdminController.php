@@ -39,11 +39,13 @@ class AdminController extends Controller
     public function usersEditPost(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'address' => 'required'
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+            'phone' => 'required|string',
+            'address' => 'required|string'
         ]);
+
         $user = User::find($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
@@ -67,12 +69,13 @@ class AdminController extends Controller
     public function userAddPost(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:8',
-            'phone' => 'required',
-            'address' => 'required'
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+            'phone' => 'required|string',
+            'address' => 'required|string'
         ]);
+
         User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -99,11 +102,12 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email',
-            'phone' => 'required',
+            'email' => 'required|email|unique:chefs,email',
+            'phone' => 'required|string',
             'address' => 'required|string',
             'rating' => 'required|numeric|min:0|max:5'
         ]);
+
         $chef = Chef::find($id);
         $chef->name = $request->input('name');
         $chef->email = $request->input('email');
@@ -129,8 +133,8 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email',
-            'phone' => 'required',
+            'email' => 'required|email|unique:chefs,email',
+            'phone' => 'required|string',
             'address' => 'required|string',
             'rating' => 'required|numeric|min:0|max:5'
         ]);
@@ -160,11 +164,11 @@ class AdminController extends Controller
     public function ordersEditPost(Request $request, $id)
     {
         $request->validate([
-            'user_id' => 'required|numeric|min:1',
-            'chef_id' => 'nullable|numeric|min:1',
+            'user_id' => 'required|numeric|min:1|exists:users,id',
+            'chef_id' => 'nullable|numeric|min:1|exists:chefs,id',
             'title' => 'required|string',
             'description' => 'required|string',
-            'price' => 'required|numeric|min:0',
+            'price' => 'required|numeric|min:1',
             'status' => 'required|numeric|min:0|max:2'
         ]);
 
@@ -194,13 +198,14 @@ class AdminController extends Controller
     public function ordersAddPost(Request $request)
     {
         $request->validate([
-            'user_id' => 'required|numeric|min:1',
-            'chef_id' => 'nullable|numeric|min:1',
+            'user_id' => 'required|numeric|min:1|exists:users,id',
+            'chef_id' => 'nullable|numeric|min:1|exists:chefs,id',
             'title' => 'required|string',
             'description' => 'required|string',
-            'price' => 'required|numeric|min:0',
+            'price' => 'required|numeric|min:1',
             'status' => 'required|numeric|min:0|max:2'
         ]);
+
         Order::create([
             'user_id' => $request->input('user_id'),
             'chef_id' => $request->input('chef_id'),
