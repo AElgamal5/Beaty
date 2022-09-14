@@ -89,6 +89,62 @@ class AdminController extends Controller
         return view('admin.chefs', ['chefs' => $chefs]);
     }
 
+    public function chefsEdit($id)
+    {
+        $chef = Chef::where('id', '=', $id)->get();
+        return view('admin.chefsEdit', ['chef' => $chef[0]]);
+    }
+
+    public function chefsEditPost(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'address' => 'required|string',
+            'rating' => 'required|numeric|min:0|max:5'
+        ]);
+        $chef = Chef::find($id);
+        $chef->name = $request->input('name');
+        $chef->email = $request->input('email');
+        $chef->phone = $request->input('phone');
+        $chef->address = $request->input('address');
+        $chef->rating = $request->input('rating');
+        $chef->save();
+        return redirect()->route('admin.chefs');
+    }
+
+    public function chefsDelete($id)
+    {
+        Chef::find($id)->delete();
+        return redirect()->back();
+    }
+
+    public function chefsAdd()
+    {
+        return view('admin.chefsAdd');
+    }
+
+    public function chefsAddPost(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'address' => 'required|string',
+            'rating' => 'required|numeric|min:0|max:5'
+        ]);
+        Chef::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+            'phone' => $request->input('phone'),
+            'address' => $request->input('address'),
+            'rating' => $request->input('rating'),
+        ]);
+        return redirect()->route('admin.chefs');
+    }
+
     public function orders()
     {
         $orders = Order::all();

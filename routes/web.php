@@ -54,6 +54,12 @@ Route::get('admin/users/add', [AdminController::class, 'userAdd'])->name('admin.
 Route::post('admin/users/add', [AdminController::class, 'userAddPost'])->name('admin.users.add.post');
 
 Route::get('admin/chefs', [AdminController::class, 'chefs'])->name('admin.chefs');
+Route::get('admin/chefs/edit/{id}', [AdminController::class, 'chefsEdit'])->name('admin.chefs.edit');
+Route::post('admin/chefs/edit/{id}', [AdminController::class, 'chefsEditPost'])->name('admin.chefs.edit.post');
+Route::get('admin/chefs/delete/{id}', [AdminController::class, 'chefsDelete'])->name('admin.chefs.delete');
+Route::get('admin/chefs/add', [AdminController::class, 'chefsAdd'])->name('admin.chefs.add');
+Route::post('admin/chefs/add', [AdminController::class, 'chefsAddPost'])->name('admin.chefs.add.post');
+
 Route::get('admin/orders', [AdminController::class, 'orders'])->name('admin.orders');
 
 
