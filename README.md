@@ -1,64 +1,28 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><img src="../Beaty/readme/1.png"></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## About
 
-## About Laravel
+This website aims to help customers order home made food customized to each customer’s needs.
+___
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<br />
+<br />
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Goals
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Make the customer able to order any meal that he wants online.
+- Offer a platform for the chefs to offer their services for the customers.
+- Allow the chefs to share their feedback with the chefs and other users.
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+___
+<br />
+<br />
+<p align="center"><img src="https://user-images.githubusercontent.com/102888086/190493587-e8b802dd-ba1c-44b1-baa6-d95e9e341ce9.png"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/102888086/190493685-5cd7bbd8-6457-4639-8987-b1a5843ce04c.png"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/102888086/190494477-9d0e1288-2caa-4319-8ff7-f284113722d2.jpeg"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/102888086/190494664-417992f0-0508-4d8c-9191-3c8bdb3299d5.jpeg"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/102888086/190496896-98e1d957-dc81-44b3-8bff-a13ae63d027c.jpeg"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/102888086/190496977-a802b8ad-4219-4d0d-a4ac-75d9e8322078.jpeg"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/102888086/190503058-97aa8e81-7015-4634-a9bc-dd2e6b3fb6cf.jpeg"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/102888086/190503725-6c7accf7-5b6b-4b4c-a50d-5dbebaffd1a9.jpeg"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/102888086/190504117-aea5861e-835e-46fb-b807-763329aef90b.jpeg"></p>
