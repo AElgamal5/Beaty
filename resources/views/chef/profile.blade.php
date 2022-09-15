@@ -9,7 +9,8 @@
         <br><br>
         <h3>User profile : </h3>
         <br>
-        <form action="{{ Route('chef.profile.edit', Auth::guard('chef')->user()->id) }}" method="POST">
+        <form action="{{ Route('chef.profile.edit', Auth::guard('chef')->user()->id) }}" method="POST"
+            enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <label class="col-3 h4">Chef No.: </label>
@@ -54,12 +55,12 @@
             <div class="row">
                 <label class="col-3 h4">User Photo: </label>
                 <input type="file" name="photo" class="h4" placeholder="photo">
-                @if ($user->photo == null)
+                @if (Auth::guard('chef')->user()->photo == null)
                     <img src="{{ asset('images/avatar.png') }}" alt="avatar" class="img-fluid rounded-circle mr-1"
-                         width="60">
+                        width="60">
                 @else
-                    <img src="{{ asset('images/' . $user->photo) }}" alt="avatar" class="img-fluid rounded-circle mr-1"
-                         width="60">
+                    <img src="{{ asset('images/' . Auth::guard('chef')->user()->photo) }}" alt="avatar"
+                        class="img-fluid rounded-circle mr-1" width="60">
                 @endif
             </div>
             <br>

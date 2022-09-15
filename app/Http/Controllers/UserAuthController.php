@@ -11,6 +11,8 @@ class UserAuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        $this->middleware('guest:chef');
+        $this->middleware('guest:admin');
     }
 
     public function login()
