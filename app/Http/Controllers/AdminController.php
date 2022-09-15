@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Chef;
+use App\Models\ContactUs;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,7 +22,8 @@ class AdminController extends Controller
         $chefNo = Chef::count();
         $adminNo = Admin::count();
         $orderNo = Order::count();
-        return view('admin.dashboard', ['usersNo' => $usersNo, 'chefNo' => $chefNo, 'adminNo' => $adminNo, 'orderNo' => $orderNo]);
+        $contactUsNo = ContactUs::count();
+        return view('admin.dashboard', ['usersNo' => $usersNo, 'chefNo' => $chefNo, 'adminNo' => $adminNo, 'orderNo' => $orderNo, 'contactUsNo' => $contactUsNo]);
     }
 
     public function users()
@@ -215,5 +217,20 @@ class AdminController extends Controller
             'status' => $request->input('status'),
         ]);
         return redirect()->route('admin.orders');
+    }
+
+    public function contactUS()
+    {
+        // $contacts = ContactUs::simplePaginate(5, ['*'], 'contactUs');
+        $contacts = ContactUs::orderBy('status')->simplePaginate(5, ['*'], 'contactUs');
+        return view('admin.contactUs', ['contacts' => $contacts]);
+    }
+
+    public function contactUSDone($id)
+    {
+        $contact = ContactUs::find($id);
+        $contact->status = 1;
+        $contact->save();
+        return redirect()->back();
     }
 }

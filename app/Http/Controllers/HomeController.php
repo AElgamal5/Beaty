@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactUs;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,5 +17,24 @@ class HomeController extends Controller
     public function index()
     {
         return view('index');
+    }
+
+    public function contactUs(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'subject' => 'required|string',
+            'message' => 'required|string'
+        ]);
+
+        ContactUs::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'subject' => $request->input('subject'),
+            'message' => $request->input('message'),
+        ]);
+
+        return redirect()->back()->withSuccess('Request send Successfully');
     }
 }

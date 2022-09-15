@@ -27,6 +27,12 @@
                                     class="ms-1 d-none d-sm-inline text-white">Orders</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ Route('admin.contactUS') }}" class="nav-link align-middle px-0">
+                                <i class="fa-solid fa-message"></i>
+                                <span class="ms-1 d-none d-sm-inline text-white">Contact us</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -51,10 +57,13 @@
                     <li>
                         <h3 class="text-dark"> <i class="fas fa-motorcycle"></i> Order no. : {{ $orderNo ?? 0 }}</h3>
                     </li>
+                    <br>
+                    <li>
+                        <h3 class="text-info"> <i class="fa-solid fa-message"></i> Contact Us no. : {{ $contactUsNo ?? 0 }}
+                        </h3>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
-    {{-- <div class="container">
-    </div> --}}
 @endsection

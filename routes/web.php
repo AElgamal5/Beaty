@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::post('/', [HomeController::class, 'contactUs'])->name('contactUs');
 
 //---------------------------------User-----------------------------------//
 //--public
@@ -70,7 +71,9 @@ Route::post('admin/orders/edit{id}', [AdminController::class, 'ordersEditPost'])
 Route::get('admin/orders/delete/{id}', [AdminController::class, 'ordersDelete'])->name('admin.orders.delete');
 Route::get('admin/orders/add', [AdminController::class, 'ordersAdd'])->name('admin.orders.add');
 Route::post('admin/orders/add', [AdminController::class, 'ordersAddPost'])->name('admin.orders.add.post');
-
+//contact us
+Route::get('admin/contactUS', [AdminController::class, 'contactUS'])->name('admin.contactUS');
+Route::get('admin/contactUS/done{id}', [AdminController::class, 'contactUSDone'])->name('admin.contactUS.done');
 
 //---------------------------------CHEF-----------------------------------//
 
