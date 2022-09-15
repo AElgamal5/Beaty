@@ -1,4 +1,4 @@
-<p align="center"><img src="../Beaty/readme/1.png"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/102888086/190507136-22ba0187-94f6-4154-869e-ad95278fb7a8.png"></p>
 
 ## About
 
@@ -17,8 +17,6 @@ ___
 ___
 <br />
 <br />
-<p align="center"><img src="https://user-images.githubusercontent.com/102888086/190493587-e8b802dd-ba1c-44b1-baa6-d95e9e341ce9.png"></p>
-<p align="center"><img src="https://user-images.githubusercontent.com/102888086/190493685-5cd7bbd8-6457-4639-8987-b1a5843ce04c.png"></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/102888086/190494477-9d0e1288-2caa-4319-8ff7-f284113722d2.jpeg"></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/102888086/190494664-417992f0-0508-4d8c-9191-3c8bdb3299d5.jpeg"></p>
 <p align="center"><img src="https://user-images.githubusercontent.com/102888086/190496896-98e1d957-dc81-44b3-8bff-a13ae63d027c.jpeg"></p>
