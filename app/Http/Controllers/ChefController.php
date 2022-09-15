@@ -7,12 +7,15 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
 
 class ChefController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:chef')->except(['logout', 'index', 'display_accepted_orders', 'accept_order', 'display_not_accepted_orders', 'mark_order_done', 'profile', 'profileEdit']);
+        $this->middleware('guest');
+        $this->middleware('guest:admin');
     }
 
 
