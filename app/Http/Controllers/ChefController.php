@@ -55,21 +55,25 @@ class ChefController extends Controller
             'email' => 'required|email|unique:chefs,email',
             'password' => 'required|min:6',
             'phone' => 'required|string',
-            'address' => 'required|string'
+            'address' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ]);
-
-        $user = Chef::query()->where('email', '=', $request->email)->first();
-        if (!$user) {
-            $user = new Chef();
-            $user->email = $request->email;
-            $user->name = $request->name;
-            $user->password = Hash::make($request->password);
-            $user->phone = $request->phone;
-            $user->address = $request->address;
-            $user->save();
-            $request->session()->put('chef_id', $user->id);
-            return redirect()->route('chef.login_index');
+        $profileImage = NULL;
+        if ($image = $request->file('photo')) {
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
         }
+        $user = new Chef();
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->password = Hash::make($request->password);
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->photo = $profileImage;
+        $user->save();
+        $request->session()->put('chef_id', $user->id);
+        return redirect()->route('chef.login_index');
     }
 
     public function index(Request $request)
@@ -134,7 +138,8 @@ class ChefController extends Controller
             'email' => 'required|email',
             'password' => 'nullable|min:6',
             'phone' => 'required|string',
-            'address' => 'required|string'
+            'address' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ]);
         $chef = Chef::find($id);
         $chef->name = $request->input('name');
@@ -144,6 +149,17 @@ class ChefController extends Controller
         }
         $chef->phone = $request->input('phone');
         $chef->address = $request->input('address');
+        if ($request->file('photo') != NULL) {
+            // dd('fol');
+            $image = $request->file('photo');
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            if (File::exists(public_path('images/' . $chef->photo))) {
+                File::delete(public_path('images/' . $chef->photo));
+            }
+            $chef->photo = $profileImage;
+        }
         $chef->save();
         return redirect()->back()->withSuccess('Data changed Successfully');
     }
