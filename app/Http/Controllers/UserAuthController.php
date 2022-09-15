@@ -52,14 +52,23 @@ class UserAuthController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
             'phone' => 'required|string',
-            'address' => 'required|string'
+            'address' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ]);
+        $profileImage = NULL;
+        if ($image = $request->file('photo')) {
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+        }
+        // dd($profileImage);
         User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
             'phone' => $request->input('phone'),
             'address' => $request->input('address'),
+            'photo' => $profileImage,
         ]);
         return redirect()->route('login')->withSuccess('You have Successfully registerd');
     }

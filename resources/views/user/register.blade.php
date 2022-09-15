@@ -7,7 +7,7 @@
     <div class="container">
         <h3>User Register :</h3>
         <br>
-        <form method="POST" action="{{ route('register.post') }}">
+        <form method="POST" action="{{ route('register.post') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label>Name</label>
@@ -28,6 +28,10 @@
             <div class="form-group">
                 <label>Password</label>
                 <input type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label>Photo</label>
+                <input type="file" name="photo" class="form-control" placeholder="photo">
             </div>
             <button type="submit" class="btn btn-primary">Sign up</button>
         </form>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -87,7 +88,8 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'nullable|min:6',
             'phone' => 'required|string',
-            'address' => 'required|string'
+            'address' => 'required|string',
+            'photo' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
         ]);
         $user = User::find($id);
         $user->name = $request->input('name');
@@ -97,6 +99,18 @@ class UserController extends Controller
         }
         $user->phone = $request->input('phone');
         $user->address = $request->input('address');
+        if ($request->file('photo') != NULL) {
+            // dd('fol');
+            $image = $request->file('photo');
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            if (File::exists(public_path('images/' . $user->photo))) {
+                File::delete(public_path('images/' . $user->photo));
+            }
+            $user->photo = $profileImage;
+        }
+        // dd('lol');
         $user->save();
         return redirect()->back()->withSuccess('Data changed Successfully');
     }

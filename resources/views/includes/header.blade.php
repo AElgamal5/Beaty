@@ -8,12 +8,20 @@
             <a href="/#aboutUS" class="btn btn-light mr-2">about us</a>
             @auth('web')
                 <a href="{{ Route('dashboard') }}" class="btn btn-light mr-2">Dashboard</a>
-                <a href="{{ Route('profile', Auth::user()->id) }}" class="btn btn-light mr-2">{{ Auth::user()->name }}</a>
+                @if (Auth::user()->photo == null)
+                    <a href="{{ Route('profile', Auth::user()->id) }}"
+                        class="btn btn-light mr-2">{{ Auth::user()->name }}</a>
+                @else
+                    <a href="{{ Route('profile', Auth::user()->id) }}" class="btn btn-light mr-2">{{ Auth::user()->name }}
+                        <img src="{{ asset('images/' . Auth::user()->photo) }}" alt="avatar"
+                            class="img-fluid rounded-circle ml-1" width="25"></a>
+                @endif
                 <a href="{{ Route('logout') }}" class="btn btn-dark">Logout</a>
             @endauth
             @auth('chef')
                 <a href="{{ Route('chef.index') }}" class="btn btn-light mr-2">Dashboard</a>
-                <a href="{{ Route('chef.profile') }}" class="btn btn-light mr-2">{{ Auth::guard('chef')->user()->name }}</a>
+                <a href="{{ Route('chef.profile') }}"
+                    class="btn btn-light mr-2">{{ Auth::guard('chef')->user()->name }}</a>
                 <a href="{{ Route('chef.logout') }}" class="btn btn-dark">Logout</a>
             @endauth
             @auth('admin')
