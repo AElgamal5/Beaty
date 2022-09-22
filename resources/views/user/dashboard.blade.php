@@ -76,10 +76,18 @@
                                 @endif
 
                             </td>
-                            <td class="text-center"><a href="{{ Route('editOrderShow', $order->id) }}"
-                                    class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i> Edit</a> | <a
-                                    href="{{ Route('deleteOrder', $order->id) }}" class="btn btn-danger"><i
-                                        class="fa-solid fa-trash"></i> Delete</a>
+                            <td class="text-center">
+                                @if ($order->chef_id == null)
+                                    <a href="{{ Route('editOrderShow', $order->id) }}" class="btn btn-primary"><i
+                                            class="fa-solid fa-pen-to-square"></i> Edit</a> | <a
+                                        href="{{ Route('deleteOrder', $order->id) }}" class="btn btn-danger"><i
+                                            class="fa-solid fa-trash"></i> Delete</a>
+                                @else
+                                    <a href="#" class="btn btn-primary disabled"><i
+                                            class="fa-solid fa-pen-to-square"></i>
+                                        Edit</a> | <a href="#" class="btn btn-danger disabled"><i
+                                            class="fa-solid fa-trash"></i> Delete</a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
